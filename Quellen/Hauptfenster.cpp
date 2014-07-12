@@ -29,6 +29,7 @@ Hauptfenster::Hauptfenster(QWidget *eltern) : QMainWindow(eltern)
 	Uhr= new QTimer(this);
 	connect(Uhr,SIGNAL(timeout()),this,SLOT(UhrzeitSetzen()));
 	Uhr->start(1000);
+	UhrzeitSetzen();
 }
 
 void Hauptfenster::changeEvent(QEvent *e)
@@ -45,14 +46,9 @@ void Hauptfenster::changeEvent(QEvent *e)
 }
 void Hauptfenster::UhrzeitSetzen()
 {
-	#if QT_VERSION >= 0x050000
-		static const QString Format("dd.MM.yyyy hh:mm:ss t");
-	#else
-		static const QString Format("dd.MM.yyyy hh:mm:ss");
-	#endif
 	QString UTC("dd.mm.yyyy hh:mm:ss");
 	if(!Stundenmodus->checkState())
 		UTC.append(" AP");
-	txtZeitLokal->setText(QDateTime::currentDateTime().toString(Format));
+	txtZeitLokal->setText(QDateTime::currentDateTime().toString("dd.MM.yyyy hh:mm:ss t"));
 	txtZeitUTC->setText(QDateTime::currentDateTimeUtc().toString(UTC));
 }
