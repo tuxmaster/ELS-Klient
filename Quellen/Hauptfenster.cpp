@@ -26,10 +26,30 @@ Hauptfenster::Hauptfenster(QWidget *eltern) : QMainWindow(eltern)
 	Hilfsfunktionen::FensterZentrieren(this);
 	QMainWindow::statusBar()->showMessage(tr("Version: %1").arg(VERSION));
 	QTimer *Uhr;
+	QGeoPositionInfoSource *GPS_Quelle;
+
 	Uhr= new QTimer(this);
+	GPS_Quelle = QGeoPositionInfoSource::createDefaultSource(this);
+
 	connect(Uhr,SIGNAL(timeout()),this,SLOT(UhrzeitSetzen()));
 	Uhr->start(1000);
 	UhrzeitSetzen();
+
+#ifdef QT_DEBUG
+	qDebug()<<"GPS Quellen:"<<QGeoPositionInfoSource::availableSources();
+#endif
+	if(GPS_Quelle)
+	{
+		/*Wenn eine API gefunden wurde, dann regelmäßig die Daten holen*/
+		connect(GPS_Quelle,SIGNAL(positionUpdated(QGeoPositionInfo)),this,SLOT(NeuePosition(QGeoPositionInfo)));
+		connect(GPS_Quelle,SIGNAL(error(QGeoPositionInfoSource::Error)),this,SLOT(Positionsfehler(QGeoPositionInfoSource::Error)));
+		GPS_Quelle->startUpdates();
+	}
+	else
+	{
+		/* Keine GPS API gefunden*/
+		PositionStapel->setCurrentIndex(1);
+	}
 }
 
 void Hauptfenster::changeEvent(QEvent *e)
@@ -51,4 +71,19 @@ void Hauptfenster::UhrzeitSetzen()
 		UTC.append(" AP");
 	txtZeitLokal->setText(QDateTime::currentDateTime().toString("dd.MM.yyyy hh:mm:ss t"));
 	txtZeitUTC->setText(QDateTime::currentDateTimeUtc().toString(UTC));
+}
+void Hauptfenster::NeuePosition(const QGeoPositionInfo &info)
+{
+	qDebug()<<info;
+}
+void Hauptfenster::Positionsfehler(QGeoPositionInfoSource::Error fehler)
+{
+	QString Fehlertext;
+	switch(fehler)
+	{
+		case QGeoPositionInfoSource::AccessError:
+				Fehlertext=tr("Keine Zugrifsberechtigung auf die GPS Quelle.");
+				break;
+	}
+	qDebug()<<Fehlertext;
 }
