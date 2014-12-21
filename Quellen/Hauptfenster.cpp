@@ -22,7 +22,6 @@
 #include "Vorgaben.h"
 #include "Hilfsfunktionen.h"
 #include "Funkkenner.h"
-#include "Funkalphabet.h"
 
 Hauptfenster::Hauptfenster(QWidget *eltern) : QMainWindow(eltern)
 {
@@ -83,7 +82,6 @@ void Hauptfenster::changeEvent(QEvent *e)
 }
 void Hauptfenster::focusInEvent(QFocusEvent *ereignis)
 {
-	qDebug()<<"test";
 	if(K_Funkalphabet)
 	{
 		if(K_Funkalphabet->isVisible())
@@ -137,9 +135,15 @@ void Hauptfenster::on_action_Alphabet_triggered()
 {
 	if(!K_Funkalphabet)
 	{
-		K_Funkalphabet=new Funkalphabet(this);
+		K_Funkalphabet=new Funkalphabet(this,(Norm)K_Einstellungen->value("Funk/Norm",0).toInt());
 		K_Funkalphabet->setWindowFlags(Qt::CustomizeWindowHint|Qt::WindowCloseButtonHint|Qt::WindowTitleHint|Qt::WindowMinimizeButtonHint|Qt::Window);
+		connect(K_Funkalphabet,SIGNAL(NormSpeichern(Norm)),this,SLOT(FunkalphabetNormSpeichern(Norm)));
+		connect(K_Funkalphabet,SIGNAL(Fehler(QString)),this,SLOT(Fehler(QString)));
 	}
 	K_Funkalphabet->activateWindow();
 	K_Funkalphabet->show();
+}
+void Hauptfenster::FunkalphabetNormSpeichern(Norm welche)
+{
+	K_Einstellungen->setValue("Funk/Norm",welche);
 }

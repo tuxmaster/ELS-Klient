@@ -22,8 +22,8 @@
 #include <QtCore>
 
 #include "ui_Hauptfenster.h"
+#include "Funkalphabet.h"
 
-class Funkalphabet;
 class Hauptfenster : public QMainWindow, private Ui::Hauptfenster
 {
 		Q_OBJECT
@@ -43,6 +43,7 @@ class Hauptfenster : public QMainWindow, private Ui::Hauptfenster
 		void on_action_Alphabet_triggered();
 		void on_Stundenmodus_stateChanged(int status);
 		void Fehler(const QString& meldung);
+		void FunkalphabetNormSpeichern(Norm welche);
 
 	private:
 		QSettings*		K_Einstellungen;
