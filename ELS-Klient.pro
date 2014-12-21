@@ -4,7 +4,7 @@
 #
 #-------------------------------------------------
 
-QT       += core gui widgets positioning
+QT       += core gui widgets positioning sql
 
 TARGET = ELS-Klient
 
@@ -13,9 +13,11 @@ MOC_DIR=tmp/moc
 OBJECTS_DIR=tmp/obj
 RCC_DIR=tmp/rcc
 
-
 TEMPLATE = app
 
+INCLUDEPATH += ../Funkalphabet/Quellen \
+		../Funkalphabet/tmp/ui
+LIBS += -L ../Funkalphabet/ -lFunkalphabet
 
 SOURCES += Quellen/Start.cpp\
 	Quellen/Hauptfenster.cpp \

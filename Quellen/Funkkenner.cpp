@@ -19,6 +19,7 @@
 
 DlgFunkkenner::DlgFunkkenner(QWidget *eltern,const QString& funkkenner) :	QDialog(eltern)
 {
+	this->setWindowFlags(Qt::CustomizeWindowHint|Qt::WindowCloseButtonHint|Qt::WindowTitleHint|Qt::Window);
 	K_Funkkenner=funkkenner;
 	setupUi(this);
 	txtFunkkenner->setText(K_Funkkenner);

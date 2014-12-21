@@ -16,18 +16,31 @@
 */
 
 #include <QtGui>
+#include <QtSql>
+#include <QMessageBox>
 #include "Hauptfenster.h"
 #include "Vorgaben.h"
 #include "Hilfsfunktionen.h"
 #include "Funkkenner.h"
+#include "Funkalphabet.h"
 
 Hauptfenster::Hauptfenster(QWidget *eltern) : QMainWindow(eltern)
 {
+	K_Funkalphabet=0;
 	K_Einstellungen=new QSettings(FIRMA,PROGRAMM,this);
 	setupUi(this);
+
+	if(!QSqlDatabase::isDriverAvailable("QSQLITE"))
+	{
+		Fehler(trUtf8("Das Qt SQLite Modul ist nicht verfügbar. Ohne dieses ist ein Start nicht möglich."));
+		qApp->exit(1);
+		return;
+	}
 	txtFunkkenner->setText(K_Einstellungen->value("Funk/Kenner",tr("unbekannt")).toString());
 	Stundenmodus->setCheckState(static_cast<Qt::CheckState>(K_Einstellungen->value("Programm/24H",Qt::Checked).toInt()));
+
 	Hilfsfunktionen::FensterZentrieren(this);
+
 	QMainWindow::statusBar()->showMessage(tr("Version: %1").arg(VERSION));
 	QTimer *Uhr;
 	QGeoPositionInfoSource *GPS_Quelle;
@@ -68,6 +81,17 @@ void Hauptfenster::changeEvent(QEvent *e)
 				break;
 	}
 }
+void Hauptfenster::focusInEvent(QFocusEvent *ereignis)
+{
+	qDebug()<<"test";
+	if(K_Funkalphabet)
+	{
+		if(K_Funkalphabet->isVisible())
+			K_Funkalphabet->hide();
+	}
+	QMainWindow::focusInEvent(ereignis);
+}
+
 void Hauptfenster::UhrzeitSetzen()
 {
 	QString UTC("dd.mm.yyyy hh:mm:ss");
@@ -103,4 +127,19 @@ void Hauptfenster::on_action_Kenner_setzen_triggered()
 void Hauptfenster::on_Stundenmodus_stateChanged(int status)
 {
 	K_Einstellungen->setValue("Programm/24H",status);
+}
+void Hauptfenster::Fehler(const QString &meldung)
+{
+	QMessageBox::critical(this,tr("Fehler"),meldung);
+	qApp->exit(1);
+}
+void Hauptfenster::on_action_Alphabet_triggered()
+{
+	if(!K_Funkalphabet)
+	{
+		K_Funkalphabet=new Funkalphabet(this);
+		K_Funkalphabet->setWindowFlags(Qt::CustomizeWindowHint|Qt::WindowCloseButtonHint|Qt::WindowTitleHint|Qt::WindowMinimizeButtonHint|Qt::Window);
+	}
+	K_Funkalphabet->activateWindow();
+	K_Funkalphabet->show();
 }

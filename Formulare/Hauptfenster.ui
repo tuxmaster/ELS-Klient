@@ -10,6 +10,9 @@
     <height>557</height>
    </rect>
   </property>
+  <property name="focusPolicy">
+   <enum>Qt::ClickFocus</enum>
+  </property>
   <property name="windowTitle">
    <string>Einsatzleitsystem - Klient</string>
   </property>
@@ -184,6 +187,7 @@
      <string>&amp;Funk</string>
     </property>
     <addaction name="action_Kenner_setzen"/>
+    <addaction name="action_Alphabet"/>
    </widget>
    <addaction name="menu_Funk"/>
   </widget>
@@ -199,6 +203,11 @@
   <action name="action_Kenner_setzen">
    <property name="text">
     <string>&amp;Kenner setzen</string>
+   </property>
+  </action>
+  <action name="action_Alphabet">
+   <property name="text">
+    <string>&amp;Alphabet</string>
    </property>
   </action>
  </widget>

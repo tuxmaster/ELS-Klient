@@ -23,6 +23,7 @@
 
 #include "ui_Hauptfenster.h"
 
+class Funkalphabet;
 class Hauptfenster : public QMainWindow, private Ui::Hauptfenster
 {
 		Q_OBJECT
@@ -32,16 +33,20 @@ class Hauptfenster : public QMainWindow, private Ui::Hauptfenster
 
 	protected:
 		void changeEvent(QEvent *e);
+		void		focusInEvent(QFocusEvent * ereignis);
 
 	private Q_SLOTS:
 		void UhrzeitSetzen();
 		void NeuePosition(const QGeoPositionInfo &info);
 		void Positionsfehler(QGeoPositionInfoSource::Error fehler);
 		void on_action_Kenner_setzen_triggered();
+		void on_action_Alphabet_triggered();
 		void on_Stundenmodus_stateChanged(int status);
+		void Fehler(const QString& meldung);
 
 	private:
-		QSettings*	K_Einstellungen;
+		QSettings*		K_Einstellungen;
+		Funkalphabet*	K_Funkalphabet;
 };
 
 #endif // HAUPTFENSTER_H
