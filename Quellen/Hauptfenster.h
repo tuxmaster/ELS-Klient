@@ -19,6 +19,7 @@
 #define HAUPTFENSTER_H
 
 #include <QGeoPositionInfoSource>
+#include <QtCore>
 
 #include "ui_Hauptfenster.h"
 
@@ -36,6 +37,11 @@ class Hauptfenster : public QMainWindow, private Ui::Hauptfenster
 		void UhrzeitSetzen();
 		void NeuePosition(const QGeoPositionInfo &info);
 		void Positionsfehler(QGeoPositionInfoSource::Error fehler);
+		void on_action_Kenner_setzen_triggered();
+		void on_Stundenmodus_stateChanged(int status);
+
+	private:
+		QSettings*	K_Einstellungen;
 };
 
 #endif // HAUPTFENSTER_H

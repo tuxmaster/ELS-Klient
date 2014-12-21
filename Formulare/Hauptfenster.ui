@@ -14,7 +14,7 @@
    <string>Einsatzleitsystem - Klient</string>
   </property>
   <widget class="QWidget" name="centralWidget">
-   <layout class="QVBoxLayout" name="verticalLayout_5">
+   <layout class="QVBoxLayout" name="verticalLayout_6">
     <item>
      <layout class="QHBoxLayout" name="horizontalLayout_2">
       <item>
@@ -137,6 +137,22 @@
         </layout>
        </widget>
       </item>
+      <item>
+       <widget class="QGroupBox" name="groupBox_3">
+        <property name="title">
+         <string>Funkkenner</string>
+        </property>
+        <layout class="QVBoxLayout" name="verticalLayout_5">
+         <item>
+          <widget class="QLabel" name="txtFunkkenner">
+           <property name="text">
+            <string>Heros Berlin 99/99/99</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </item>
      </layout>
     </item>
     <item>
@@ -163,6 +179,13 @@
      <height>27</height>
     </rect>
    </property>
+   <widget class="QMenu" name="menu_Funk">
+    <property name="title">
+     <string>&amp;Funk</string>
+    </property>
+    <addaction name="action_Kenner_setzen"/>
+   </widget>
+   <addaction name="menu_Funk"/>
   </widget>
   <widget class="QToolBar" name="mainToolBar">
    <attribute name="toolBarArea">
@@ -173,6 +196,11 @@
    </attribute>
   </widget>
   <widget class="QStatusBar" name="statusBar"/>
+  <action name="action_Kenner_setzen">
+   <property name="text">
+    <string>&amp;Kenner setzen</string>
+   </property>
+  </action>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <resources/>

@@ -19,10 +19,13 @@ TEMPLATE = app
 
 SOURCES += Quellen/Start.cpp\
 	Quellen/Hauptfenster.cpp \
-    Quellen/Hilfsfunktionen.cpp
+    Quellen/Hilfsfunktionen.cpp \
+    Quellen/Funkkenner.cpp
 
 HEADERS  += Quellen/Hauptfenster.h \
     Quellen/Vorgaben.h \
-    Quellen/Hilfsfunktionen.h
+    Quellen/Hilfsfunktionen.h \
+    Quellen/Funkkenner.h
 
-FORMS    += Formulare/Hauptfenster.ui
+FORMS    += Formulare/Hauptfenster.ui \
+    Formulare/Funkkenner.ui

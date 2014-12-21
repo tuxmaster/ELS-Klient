@@ -15,11 +15,27 @@
 	along with this program.  If not, see <http://www.gnu.org/licenses/>
 */
 
-#ifndef VORGABEN_H
-#define VORGABEN_H
+#ifndef FUNKKENNER_H
+#define FUNKKENNER_H
 
-#define VERSION			"0.0.1"
-#define PROGRAMM		"ELS-Klient"
-#define FIRMA			"KatLin"
+#include "ui_Funkkenner.h"
 
-#endif // VORGABEN_H
+class DlgFunkkenner : public QDialog, private Ui::DlgFunkkenner
+{
+		Q_OBJECT
+
+	public:
+		explicit		DlgFunkkenner(QWidget *eltern,const QString& funkkenner);
+		const QString&	Funkkenner()const{return K_Funkkenner;}
+
+	public Q_SLOTS:
+		void			accept();
+
+	protected:
+		void			changeEvent(QEvent *e);
+
+	private:
+		QString			K_Funkkenner;
+};
+
+#endif // FUNKKENNER_H

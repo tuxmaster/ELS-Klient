@@ -15,11 +15,29 @@
 	along with this program.  If not, see <http://www.gnu.org/licenses/>
 */
 
-#ifndef VORGABEN_H
-#define VORGABEN_H
+#include "Quellen/Funkkenner.h"
 
-#define VERSION			"0.0.1"
-#define PROGRAMM		"ELS-Klient"
-#define FIRMA			"KatLin"
+DlgFunkkenner::DlgFunkkenner(QWidget *eltern,const QString& funkkenner) :	QDialog(eltern)
+{
+	K_Funkkenner=funkkenner;
+	setupUi(this);
+	txtFunkkenner->setText(K_Funkkenner);
+}
 
-#endif // VORGABEN_H
+void DlgFunkkenner::changeEvent(QEvent *e)
+{
+	QDialog::changeEvent(e);
+	switch (e->type())
+	{
+		case QEvent::LanguageChange:
+				retranslateUi(this);
+			break;
+		default:
+			break;
+	}
+}
+void DlgFunkkenner::accept()
+{
+	K_Funkkenner=txtFunkkenner->text();
+	QDialog::accept();
+}

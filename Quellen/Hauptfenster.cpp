@@ -19,10 +19,14 @@
 #include "Hauptfenster.h"
 #include "Vorgaben.h"
 #include "Hilfsfunktionen.h"
+#include "Funkkenner.h"
 
 Hauptfenster::Hauptfenster(QWidget *eltern) : QMainWindow(eltern)
 {
+	K_Einstellungen=new QSettings(FIRMA,PROGRAMM,this);
 	setupUi(this);
+	txtFunkkenner->setText(K_Einstellungen->value("Funk/Kenner",tr("unbekannt")).toString());
+	Stundenmodus->setCheckState(static_cast<Qt::CheckState>(K_Einstellungen->value("Programm/24H",Qt::Checked).toInt()));
 	Hilfsfunktionen::FensterZentrieren(this);
 	QMainWindow::statusBar()->showMessage(tr("Version: %1").arg(VERSION));
 	QTimer *Uhr;
@@ -86,4 +90,17 @@ void Hauptfenster::Positionsfehler(QGeoPositionInfoSource::Error fehler)
 				break;
 	}
 	qDebug()<<Fehlertext;
+}
+void Hauptfenster::on_action_Kenner_setzen_triggered()
+{
+	DlgFunkkenner* kenner=new DlgFunkkenner(this,txtFunkkenner->text());
+	if(kenner->exec()== QDialog::Accepted)
+	{
+		K_Einstellungen->setValue("Funk/Kenner",kenner->Funkkenner());
+		txtFunkkenner->setText(kenner->Funkkenner());
+	}
+}
+void Hauptfenster::on_Stundenmodus_stateChanged(int status)
+{
+	K_Einstellungen->setValue("Programm/24H",status);
 }
