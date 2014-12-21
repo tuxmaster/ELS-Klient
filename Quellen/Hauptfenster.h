@@ -44,6 +44,7 @@ class Hauptfenster : public QMainWindow, private Ui::Hauptfenster
 		void on_Stundenmodus_stateChanged(int status);
 		void Fehler(const QString& meldung);
 		void FunkalphabetNormSpeichern(Norm welche);
+		void FunkalphabetFehler(const QString& welcher);
 
 	private:
 		QSettings*		K_Einstellungen;
