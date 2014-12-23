@@ -16,18 +16,15 @@
 */
 
 #include <QtCore>
-#if QT_VERSION >= QT_VERSION_CHECK(5,0,0)
-	#include <QWidget>
-	#include <QDesktopWidget>
-	#include <QApplication>
-#endif
 #include <QtGui>
+#include <QWidget>
+#include <QDesktopWidget>
+#include <QApplication>
+#include <QMainWindow>
+#include <QDialog>
 
 #include "Hilfsfunktionen.h"
 
-Hilfsfunktionen::Hilfsfunktionen(QObject *eltern) :	QObject(eltern)
-{
-}
 void Hilfsfunktionen::FensterZentrieren(QMainWindow *fenster)
 {
 	QDesktopWidget *Arbeitsplatz = QApplication::desktop();
@@ -48,4 +45,3 @@ void Hilfsfunktionen::FensterZentrieren(QMainWindow *fenster)
 	y = (Bildschirmhoehe - Hoehe) / 2;
 	fenster->move ( x, y );
 }
-

@@ -18,20 +18,12 @@
 #ifndef HILFSFUNKTIONEN_H
 #define HILFSFUNKTIONEN_H
 
-#include <QObject>
-#include <QMainWindow>
-
-class Hilfsfunktionen : public QObject
+class QMainWindow;
+class QDialog;
+class Hilfsfunktionen
 {
-		Q_OBJECT
 	public:
-		explicit Hilfsfunktionen(QObject *eltern = 0);
 		static void FensterZentrieren(QMainWindow *fenster);
-
-	signals:
-
-	public slots:
-
 };
 
 #endif // HILFSFUNKTIONEN_H
