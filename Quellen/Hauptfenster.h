@@ -41,6 +41,7 @@ class Hauptfenster : public QMainWindow, private Ui::Hauptfenster
 		void Positionsfehler(QGeoPositionInfoSource::Error fehler);
 		void on_action_Kenner_setzen_triggered();
 		void on_action_Alphabet_triggered();
+		void on_action_Info_triggered();
 		void on_Stundenmodus_stateChanged(int status);
 		void Fehler(const QString& meldung);
 		void FunkalphabetNormSpeichern(Norm welche);
