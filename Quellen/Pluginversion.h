@@ -25,20 +25,22 @@ class Pluginversion
 	public:
 		enum Type {Formular};
 		Pluginversion();
-		Pluginversion(Type type,const QString& name,const QString& beschreibung,const QString& version)
+		Pluginversion(Type type,const QString& name,const QString& beschreibung,const QString& version,QObject* erweiterung)
 		{
-			K_Type=type;K_Name=name;K_Beschreibung=beschreibung;K_Version=version;
+			K_Type=type;K_Name=name;K_Beschreibung=beschreibung;K_Version=version;K_Erweiterung=erweiterung;
 		}
 		const Type&		Art()const{return K_Type;}
 		const QString&	Name() const {return K_Name;}
 		const QString&	Version()const {return K_Version;}
 		const QString&	Beschreibung() const {return K_Beschreibung;}
+		QObject*		Erweiterung() {return K_Erweiterung;}
 
 	private:
 		Type			K_Type;
 		QString			K_Name;
 		QString			K_Version;
 		QString			K_Beschreibung;
+		QObject*		K_Erweiterung;
 };
 
 #endif // PLUGINVERSION_H

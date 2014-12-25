@@ -19,6 +19,7 @@
 #include <QtSql>
 #include <QMessageBox>
 #include "Hauptfenster.h"
+#include "Erweiterungsuebersicht.h"
 #include "Vorgaben.h"
 #include "Hilfsfunktionen.h"
 #include "Funkkenner.h"
@@ -26,6 +27,7 @@
 Hauptfenster::Hauptfenster(QWidget *eltern) : QMainWindow(eltern)
 {
 	K_Funkalphabet=0;
+	K_Pluginliste=new QList<Pluginversion>;
 	K_Einstellungen=new QSettings(FIRMA,PROGRAMM,this);
 	setupUi(this);
 
@@ -66,6 +68,10 @@ Hauptfenster::Hauptfenster(QWidget *eltern) : QMainWindow(eltern)
 		/* Keine GPS API gefunden*/
 		PositionStapel->setCurrentIndex(1);
 	}
+}
+Hauptfenster::~Hauptfenster()
+{
+	delete K_Pluginliste;
 }
 
 void Hauptfenster::changeEvent(QEvent *e)
@@ -167,5 +173,6 @@ void Hauptfenster::on_action_Ueber_triggered()
 }
 void Hauptfenster::on_action_Ueber_Erweiterungen_triggered()
 {
-
+	Erweiterungsuebersicht* Uebersicht=new Erweiterungsuebersicht(this,K_Pluginliste);
+	Uebersicht->exec();
 }

@@ -6,6 +6,8 @@
 
 QT       += core gui widgets positioning sql
 
+CONFIG += c++11
+
 TARGET = ELS-Klient
 
 UI_DIR=tmp/ui
@@ -22,14 +24,19 @@ LIBS += -L ../Funkalphabet/ -lFunkalphabet
 SOURCES += Quellen/Start.cpp\
 	Quellen/Hauptfenster.cpp \
     Quellen/Hilfsfunktionen.cpp \
-    Quellen/Funkkenner.cpp
+    Quellen/Funkkenner.cpp \
+    Quellen/Erweiterungsuebersicht.cpp \
+    Quellen/Erweiterungsmodell.cpp
 
 HEADERS  += Quellen/Hauptfenster.h \
     Quellen/Vorgaben.h \
     Quellen/Hilfsfunktionen.h \
     Quellen/Funkkenner.h \
     Quellen/Formularplugin.h \
-    Quellen/Pluginversion.h
+    Quellen/Pluginversion.h \
+    Quellen/Erweiterungsuebersicht.h \
+    Quellen/Erweiterungsmodell.h
 
 FORMS    += Formulare/Hauptfenster.ui \
-    Formulare/Funkkenner.ui
+    Formulare/Funkkenner.ui \
+    Formulare/Erweiterungsuebersicht.ui

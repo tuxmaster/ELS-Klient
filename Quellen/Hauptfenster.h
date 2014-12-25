@@ -30,7 +30,8 @@ class Hauptfenster : public QMainWindow, private Ui::Hauptfenster
 		Q_OBJECT
 
 	public:
-		explicit Hauptfenster(QWidget *eltern = 0);
+		explicit				Hauptfenster(QWidget *eltern = 0);
+								~Hauptfenster();
 
 	protected:
 		void					changeEvent(QEvent *e);
@@ -52,7 +53,7 @@ class Hauptfenster : public QMainWindow, private Ui::Hauptfenster
 	private:
 		QSettings*				K_Einstellungen;
 		Funkalphabet*			K_Funkalphabet;
-		QList<Pluginversion>	K_Pluginliste;
+		QList<Pluginversion>*	K_Pluginliste;
 };
 
 #endif // HAUPTFENSTER_H
