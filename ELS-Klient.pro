@@ -27,7 +27,9 @@ SOURCES += Quellen/Start.cpp\
 HEADERS  += Quellen/Hauptfenster.h \
     Quellen/Vorgaben.h \
     Quellen/Hilfsfunktionen.h \
-    Quellen/Funkkenner.h
+    Quellen/Funkkenner.h \
+    Quellen/Formularplugin.h \
+    Quellen/Pluginversion.h
 
 FORMS    += Formulare/Hauptfenster.ui \
     Formulare/Funkkenner.ui

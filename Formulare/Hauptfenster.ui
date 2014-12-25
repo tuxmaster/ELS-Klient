@@ -239,7 +239,8 @@
     <property name="title">
      <string>&amp;Hilfe</string>
     </property>
-    <addaction name="action_Info"/>
+    <addaction name="action_Ueber"/>
+    <addaction name="action_Ueber_Erweiterungen"/>
    </widget>
    <widget class="QMenu" name="menu_Vordrucke">
     <property name="title">
@@ -261,9 +262,14 @@
     <string>&amp;Alphabet</string>
    </property>
   </action>
-  <action name="action_Info">
+  <action name="action_Ueber">
    <property name="text">
-    <string>&amp;Info</string>
+    <string>&amp;Über</string>
+   </property>
+  </action>
+  <action name="action_Ueber_Erweiterungen">
+   <property name="text">
+    <string>Über &amp;Erweiterungen</string>
    </property>
   </action>
  </widget>

@@ -154,7 +154,7 @@ void Hauptfenster::FunkalphabetNormSpeichern(Norm welche)
 {
 	K_Einstellungen->setValue("Funk/Norm",welche);
 }
-void Hauptfenster::on_action_Info_triggered()
+void Hauptfenster::on_action_Ueber_triggered()
 {
 	QMessageBox Meldung(this);
 	Meldung.setTextFormat(Qt::RichText);
@@ -164,4 +164,8 @@ void Hauptfenster::on_action_Info_triggered()
 					   "Fehler bitte via <a href='https://katlin.terrortux.de/bugzilla'>Bugzilla</a> melden.")
 					.arg(VERSION).arg(QT_VERSION_STR));
 	Meldung.exec();
+}
+void Hauptfenster::on_action_Ueber_Erweiterungen_triggered()
+{
+
 }
