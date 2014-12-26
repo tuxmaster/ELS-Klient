@@ -188,8 +188,8 @@ void Hauptfenster::ErweiterungenLaden()
 	K_Pluginliste->append(Pluginversion(Pluginversion::Ratte,"Name1","Beschreibung2","Version1",0));
 	K_Pluginliste->append(Pluginversion(Pluginversion::Ratte,"Name3","Beschreibung2","Version1",0));
 	K_Pluginliste->append(Pluginversion(Pluginversion::Muhh,"Name3","Beschreibung2","Version1",0));
+
 	std::sort(K_Pluginliste->begin(),K_Pluginliste->end(),Hauptfenster::KleinerAls);
-	qDebug()<<*(K_Pluginliste);
 }
 bool Hauptfenster::KleinerAls(const Pluginversion &a, const Pluginversion &b)
 {

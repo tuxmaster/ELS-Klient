@@ -28,6 +28,24 @@ Qt::ItemFlags Erweiterungsmodell::flags(const QModelIndex &index) const
 }
 QVariant Erweiterungsmodell::headerData(int sektion, Qt::Orientation ausrichtung, int rolle) const
 {
+	if((ausrichtung==Qt::Horizontal)&& (rolle==Qt::DisplayRole))
+	{
+		switch (sektion)
+		{
+			case 0:
+					return tr("Type");
+					break;
+			case 1:
+					return tr("Name");
+					break;
+			case 2:
+					return tr("Beschreibung");
+					break;
+			default:
+					return QVariant();
+					break;
+		}
+	}
 	return QVariant();
 }
 QVariant Erweiterungsmodell::data(const QModelIndex &index, int rolle) const
@@ -38,18 +56,21 @@ QModelIndex Erweiterungsmodell::index(int reihe, int spalte, const QModelIndex &
 {
 	if (!hasIndex(reihe, spalte, eltern))
 			return QModelIndex();
-	//if(!eltern.isValid())
-	return QModelIndex();
 }
 QModelIndex Erweiterungsmodell::parent(const QModelIndex &index) const
 {
-	return QModelIndex();
+	if(!index.isValid())
+		return QModelIndex();
 }
 int Erweiterungsmodell::rowCount(const QModelIndex &eltern) const
 {
-	return 0;
+	if(!eltern.isValid())
+		return 0;
+	if(eltern.column()>0)
+		return 0;
+	return K_Liste->size();
 }
 int Erweiterungsmodell::columnCount(const QModelIndex &eltern) const
 {
-	return 0;
+	return 3;
 }
