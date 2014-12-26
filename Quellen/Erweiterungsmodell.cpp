@@ -36,6 +36,9 @@ QVariant Erweiterungsmodell::data(const QModelIndex &index, int rolle) const
 }
 QModelIndex Erweiterungsmodell::index(int reihe, int spalte, const QModelIndex &eltern) const
 {
+	if (!hasIndex(reihe, spalte, eltern))
+			return QModelIndex();
+	//if(!eltern.isValid())
 	return QModelIndex();
 }
 QModelIndex Erweiterungsmodell::parent(const QModelIndex &index) const

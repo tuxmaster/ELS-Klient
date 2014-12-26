@@ -52,6 +52,7 @@ Hauptfenster::Hauptfenster(QWidget *eltern) : QMainWindow(eltern)
 	connect(Uhr,SIGNAL(timeout()),this,SLOT(UhrzeitSetzen()));
 	Uhr->start(1000);
 	UhrzeitSetzen();
+	ErweiterungenLaden();
 
 #ifdef QT_DEBUG
 	qDebug()<<"GPS Quellen:"<<QGeoPositionInfoSource::availableSources();
@@ -175,4 +176,35 @@ void Hauptfenster::on_action_Ueber_Erweiterungen_triggered()
 {
 	Erweiterungsuebersicht* Uebersicht=new Erweiterungsuebersicht(this,K_Pluginliste);
 	Uebersicht->exec();
+}
+void Hauptfenster::ErweiterungenLaden()
+{
+	K_Pluginliste->append(Pluginversion(Pluginversion::Muhh,"Name2","Beschreibung2","Version1",0));
+	K_Pluginliste->append(Pluginversion(Pluginversion::Ratte,"Name2","Beschreibung2","Version1",0));
+	K_Pluginliste->append(Pluginversion(Pluginversion::Formular,"Name3","Beschreibung2","Version1",0));
+	K_Pluginliste->append(Pluginversion(Pluginversion::Formular,"Name1","Beschreibung2","Version1",0));
+	K_Pluginliste->append(Pluginversion(Pluginversion::Formular,"Name2","Beschreibung2","Version1",0));
+	K_Pluginliste->append(Pluginversion(Pluginversion::Muhh,"Name1","Beschreibung2","Version1",0));
+	K_Pluginliste->append(Pluginversion(Pluginversion::Ratte,"Name1","Beschreibung2","Version1",0));
+	K_Pluginliste->append(Pluginversion(Pluginversion::Ratte,"Name3","Beschreibung2","Version1",0));
+	K_Pluginliste->append(Pluginversion(Pluginversion::Muhh,"Name3","Beschreibung2","Version1",0));
+	std::sort(K_Pluginliste->begin(),K_Pluginliste->end(),Hauptfenster::KleinerAls);
+	qDebug()<<*(K_Pluginliste);
+}
+bool Hauptfenster::KleinerAls(const Pluginversion &a, const Pluginversion &b)
+{
+	//Typ Sortieren
+	if(a.Art()<b.Art())
+		return true;
+	if (a.Art()>b.Art())
+		return false;
+	//Name Sortieren wenn gleiche Nummer
+	if(a.Name()==b.Name())
+		return false;
+	QStringList tmp;
+	tmp<<a.Name()<<b.Name();
+	tmp.sort();
+	if(tmp.at(0)==a.Name())
+		return true;
+	return false;
 }

@@ -54,6 +54,8 @@ class Hauptfenster : public QMainWindow, private Ui::Hauptfenster
 		QSettings*				K_Einstellungen;
 		Funkalphabet*			K_Funkalphabet;
 		QList<Pluginversion>*	K_Pluginliste;
+		void					ErweiterungenLaden();
+		static bool				KleinerAls(const Pluginversion& a,const Pluginversion& b);
 };
 
 #endif // HAUPTFENSTER_H

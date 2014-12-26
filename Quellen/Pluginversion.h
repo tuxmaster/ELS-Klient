@@ -23,7 +23,7 @@
 class Pluginversion
 {
 	public:
-		enum Type {Formular};
+		enum Type {Formular,Muhh,Ratte};
 		Pluginversion();
 		Pluginversion(Type type,const QString& name,const QString& beschreibung,const QString& version,QObject* erweiterung)
 		{
@@ -42,5 +42,6 @@ class Pluginversion
 		QString			K_Beschreibung;
 		QObject*		K_Erweiterung;
 };
-
+Q_DECLARE_METATYPE(Pluginversion)
+QDebug operator<<(QDebug debug, const Pluginversion& p);
 #endif // PLUGINVERSION_H

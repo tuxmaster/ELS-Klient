@@ -24,6 +24,7 @@
 #include <QDialog>
 
 #include "Hilfsfunktionen.h"
+#include "Pluginversion.h"
 
 void Hilfsfunktionen::FensterZentrieren(QMainWindow *fenster)
 {
@@ -44,4 +45,10 @@ void Hilfsfunktionen::FensterZentrieren(QMainWindow *fenster)
 	x = (Bildschirmbreite - Breite) / 2;
 	y = (Bildschirmhoehe - Hoehe) / 2;
 	fenster->move ( x, y );
+}
+QDebug operator<<(QDebug debug, const Pluginversion& p)
+{
+	QDebugStateSaver sichern(debug);
+	debug.nospace()<<"("<<p.Art()<<", "<<p.Name()<<", "<<p.Version()<<", "<<p.Beschreibung()<<")";
+	return debug;
 }
