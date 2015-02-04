@@ -37,6 +37,6 @@ const QString Pluginversion::Artname() const
 QDebug operator<<(QDebug debug, const Pluginversion& p)
 {
 	QDebugStateSaver sichern(debug);
-	debug.nospace()<<"("<<p.Art()<<", "<<p.Name()<<", "<<p.Version()<<", "<<p.Beschreibung()<<")";
+	debug.nospace()<<"("<<p.Art()<<", "<<p.Artname()<<", "<<p.Name()<<", "<<p.Version()<<", "<<p.Beschreibung()<<")";
 	return debug;
 }
