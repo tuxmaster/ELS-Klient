@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/Bilder">
+        <file alias="Radiowellen">Warnung_Radiowellen.svg</file>
+    </qresource>
+</RCC>
