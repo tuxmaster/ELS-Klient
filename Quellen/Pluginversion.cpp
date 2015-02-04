@@ -14,24 +14,29 @@
 	You should have received a copy of the GNU General Public License
 	along with this program.  If not, see <http://www.gnu.org/licenses/>
 */
-
-#ifndef ERWEITERUNGSMODELL_H
-#define ERWEITERUNGSMODELL_H
-
-#include <QtCore>
 #include "Pluginversion.h"
-
-class Erweiterungsmodell : public QAbstractTableModel
+Pluginversion::Pluginversion(Type type, const QString &name, const QString &beschreibung, const QString &version, QObject *erweiterung)
 {
-		Q_OBJECT
-	public:
-		explicit Erweiterungsmodell(QObject *eltern ,const QList<Pluginversion>* erweiterungen);
-		int							rowCount(const QModelIndex &) const {return K_Liste->size();}
-		int							columnCount(const QModelIndex &) const {return 3;}
-		QVariant					data(const QModelIndex &index, int rolle) const;
-		QVariant					headerData(int sektion, Qt::Orientation ausrichtung, int rolle) const;
-	private:
-		const QList<Pluginversion>*	K_Liste;
-};
+	K_Type=type;K_Name=name;K_Beschreibung=beschreibung;K_Version=version;K_Erweiterung=erweiterung;
+}
+const QString Pluginversion::Artname() const
+{
+	QString nix=QObject::tr("unbekannt");
+	switch (K_Type)
+	{
+		case Type::Formular:
+			return QObject::tr("Formular");
+			break;
+		default:
+			return nix;
+			break;
+	}
+	return nix;
+}
 
-#endif // ERWEITERUNGSMODELL_H
+QDebug operator<<(QDebug debug, const Pluginversion& p)
+{
+	QDebugStateSaver sichern(debug);
+	debug.nospace()<<"("<<p.Art()<<", "<<p.Name()<<", "<<p.Version()<<", "<<p.Beschreibung()<<")";
+	return debug;
+}

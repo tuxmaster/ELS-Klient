@@ -26,7 +26,8 @@ SOURCES += Quellen/Start.cpp\
     Quellen/Hilfsfunktionen.cpp \
     Quellen/Funkkenner.cpp \
     Quellen/Erweiterungsuebersicht.cpp \
-    Quellen/Erweiterungsmodell.cpp
+    Quellen/Erweiterungsmodell.cpp \
+    Quellen/Pluginversion.cpp
 
 HEADERS  += Quellen/Hauptfenster.h \
     Quellen/Vorgaben.h \

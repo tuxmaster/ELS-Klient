@@ -17,14 +17,9 @@
 
 #include "Erweiterungsmodell.h"
 
-Erweiterungsmodell::Erweiterungsmodell(QObject *eltern, const QList<Pluginversion> *erweiterungen) : QAbstractItemModel(eltern)
+Erweiterungsmodell::Erweiterungsmodell(QObject *eltern, const QList<Pluginversion> *erweiterungen) : QAbstractTableModel(eltern)
 {
-}
-Qt::ItemFlags Erweiterungsmodell::flags(const QModelIndex &index) const
-{
-	if (!index.isValid())
-		return 0;
-	return QAbstractItemModel::flags(index);
+	K_Liste=erweiterungen;
 }
 QVariant Erweiterungsmodell::headerData(int sektion, Qt::Orientation ausrichtung, int rolle) const
 {
@@ -50,27 +45,21 @@ QVariant Erweiterungsmodell::headerData(int sektion, Qt::Orientation ausrichtung
 }
 QVariant Erweiterungsmodell::data(const QModelIndex &index, int rolle) const
 {
+	if((rolle!= Qt::DisplayRole) || (index.row()>K_Liste->size()) )
+		return QVariant();
+	switch (index.column())
+	{
+		case 0:
+			return K_Liste->at(index.row()).Artname();
+			break;
+		case 1:
+			return K_Liste->at(index.row()).Name();
+			break;
+		case 2:
+			return K_Liste->at(index.row()).Beschreibung();
+			break;
+		default:
+			break;
+	}
 	return QVariant();
-}
-QModelIndex Erweiterungsmodell::index(int reihe, int spalte, const QModelIndex &eltern) const
-{
-	if (!hasIndex(reihe, spalte, eltern))
-			return QModelIndex();
-}
-QModelIndex Erweiterungsmodell::parent(const QModelIndex &index) const
-{
-	if(!index.isValid())
-		return QModelIndex();
-}
-int Erweiterungsmodell::rowCount(const QModelIndex &eltern) const
-{
-	if(!eltern.isValid())
-		return 0;
-	if(eltern.column()>0)
-		return 0;
-	return K_Liste->size();
-}
-int Erweiterungsmodell::columnCount(const QModelIndex &eltern) const
-{
-	return 3;
 }
