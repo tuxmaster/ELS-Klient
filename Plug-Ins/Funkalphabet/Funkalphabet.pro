@@ -4,10 +4,9 @@
 #
 #-------------------------------------------------
 
-QT       += core gui sql
+include(../../Vorgaben.pri)
 
-greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
-
+QT       += core gui sql widgets
 
 VERSION = 0.0.2
 

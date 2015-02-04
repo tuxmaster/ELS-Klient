@@ -5,8 +5,7 @@
 #-------------------------------------------------
 
 QT       += core gui widgets positioning sql
-
-CONFIG += c++11
+include(../Vorgaben.pri)
 
 TARGET = ELS-Klient
 
@@ -17,9 +16,6 @@ RCC_DIR=tmp/rcc
 
 TEMPLATE = app
 
-INCLUDEPATH += ../Funkalphabet/Quellen \
-		../Funkalphabet/tmp/ui
-LIBS += -L ../Funkalphabet/ -lFunkalphabet
 
 SOURCES += Quellen/Start.cpp\
 	Quellen/Hauptfenster.cpp \

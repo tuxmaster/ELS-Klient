@@ -26,7 +26,6 @@
 
 Hauptfenster::Hauptfenster(QWidget *eltern) : QMainWindow(eltern)
 {
-	K_Funkalphabet=0;
 	K_Pluginliste=new QList<Pluginversion>;
 	K_Einstellungen=new QSettings(FIRMA,PROGRAMM,this);
 	setupUi(this);
@@ -87,15 +86,6 @@ void Hauptfenster::changeEvent(QEvent *e)
 				break;
 	}
 }
-void Hauptfenster::focusInEvent(QFocusEvent *ereignis)
-{
-	if(K_Funkalphabet)
-	{
-		if(K_Funkalphabet->isVisible())
-			K_Funkalphabet->hide();
-	}
-	QMainWindow::focusInEvent(ereignis);
-}
 
 void Hauptfenster::UhrzeitSetzen()
 {
@@ -138,29 +128,7 @@ void Hauptfenster::Fehler(const QString &meldung)
 	QMessageBox::critical(this,tr("Fehler"),meldung);
 	qApp->exit(1);
 }
-void Hauptfenster::FunkalphabetFehler(const QString &welcher)
-{
-	QMessageBox::warning(this,tr("Fehler im Funkalphaabet"),QString("Das Funkalphabet wird deaktiviert:\n%1").arg(welcher));
-	action_Alphabet->setEnabled(false);
-	K_Funkalphabet->deleteLater();
-}
 
-void Hauptfenster::on_action_Alphabet_triggered()
-{
-	if(!K_Funkalphabet)
-	{
-		K_Funkalphabet=new Funkalphabet(this,(Norm)K_Einstellungen->value("Funk/Norm",0).toInt());
-		K_Funkalphabet->setWindowFlags(Qt::CustomizeWindowHint|Qt::WindowCloseButtonHint|Qt::WindowTitleHint|Qt::WindowMinimizeButtonHint|Qt::Window);
-		connect(K_Funkalphabet,SIGNAL(NormSpeichern(Norm)),this,SLOT(FunkalphabetNormSpeichern(Norm)));
-		connect(K_Funkalphabet,SIGNAL(Fehler(QString)),this,SLOT(FunkalphabetFehler(QString)));
-	}
-	K_Funkalphabet->activateWindow();
-	K_Funkalphabet->show();
-}
-void Hauptfenster::FunkalphabetNormSpeichern(Norm welche)
-{
-	K_Einstellungen->setValue("Funk/Norm",welche);
-}
 void Hauptfenster::on_action_Ueber_triggered()
 {
 	QMessageBox Meldung(this);

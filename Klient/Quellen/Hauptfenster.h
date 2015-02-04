@@ -22,7 +22,6 @@
 #include <QtCore>
 
 #include "ui_Hauptfenster.h"
-#include "Funkalphabet.h"
 #include "Pluginversion.h"
 
 class Hauptfenster : public QMainWindow, private Ui::Hauptfenster
@@ -35,24 +34,19 @@ class Hauptfenster : public QMainWindow, private Ui::Hauptfenster
 
 	protected:
 		void					changeEvent(QEvent *e);
-		void					focusInEvent(QFocusEvent * ereignis);
 
 	private Q_SLOTS:
 		void					UhrzeitSetzen();
 		void					NeuePosition(const QGeoPositionInfo &info);
 		void					Positionsfehler(QGeoPositionInfoSource::Error fehler);
 		void					on_action_Kenner_setzen_triggered();
-		void					on_action_Alphabet_triggered();
 		void					on_action_Ueber_triggered();
 		void					on_action_Ueber_Erweiterungen_triggered();
 		void					on_Stundenmodus_stateChanged(int status);
 		void					Fehler(const QString& meldung);
-		void					FunkalphabetNormSpeichern(Norm welche);
-		void					FunkalphabetFehler(const QString& welcher);
 
 	private:
 		QSettings*				K_Einstellungen;
-		Funkalphabet*			K_Funkalphabet;
 		QList<Pluginversion>*	K_Pluginliste;
 		void					ErweiterungenLaden();
 		static bool				KleinerAls(const Pluginversion& a,const Pluginversion& b);
