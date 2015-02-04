@@ -22,5 +22,6 @@
 #define DBDATEI			"Funkalphabet.dat"
 #define ABFRAGEDIN		"select Buchstabe,DIN from Funkalphabet"
 #define ABFRAGEITU		"select Buchstabe,Nato from Funkalphabet"
+#define FUNKALPHABET_VERSION "0.2.0"
 enum					Norm{DIN,ITU};
 #endif // VORGABEN_H

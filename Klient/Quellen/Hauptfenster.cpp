@@ -23,6 +23,8 @@
 #include "Vorgaben.h"
 #include "Hilfsfunktionen.h"
 #include "Funkkenner.h"
+#include "Funkplugin.h"
+#include "Formularplugin.h"
 
 Hauptfenster::Hauptfenster(QWidget *eltern) : QMainWindow(eltern)
 {
@@ -147,6 +149,39 @@ void Hauptfenster::on_action_Ueber_Erweiterungen_triggered()
 }
 void Hauptfenster::ErweiterungenLaden()
 {
+	QDirIterator Verzeichis(PLUGINPFAD,QDirIterator::Subdirectories);
+	QString Datei;
+	while (Verzeichis.hasNext())
+	{
+		Datei=Verzeichis.next();
+		if (Verzeichis.fileInfo().isFile())
+		{
+			QPluginLoader ErweiterungLesen(Datei);
+			//qDebug()<<ErweiterungLesen.fileName();
+			QObject *Erweiterung = ErweiterungLesen.instance();
+			if(Erweiterung)
+			{
+				//qDebug()<<"geladen";
+				Formularplugin* Formular=qobject_cast<Formularplugin*>(Erweiterung);
+				if(Formular)
+				{
+					qDebug()<<"Formularplugin";
+				}
+				else
+				{
+					Funkplugin* Funk=qobject_cast<Funkplugin*>(Erweiterung);
+
+					if (Funk)
+					{
+						qDebug()<<"Funkplugin";
+					}
+					else
+						qDebug()<<"Unbekannt";
+				}
+			}
+		}
+
+	}
 	std::sort(K_Pluginliste->begin(),K_Pluginliste->end(),Hauptfenster::KleinerAls);
 }
 bool Hauptfenster::KleinerAls(const Pluginversion &a, const Pluginversion &b)

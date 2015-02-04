@@ -15,12 +15,17 @@
 	along with this program.  If not, see <http://www.gnu.org/licenses/>
 */
 
-#ifndef VORGABEN_H
-#define VORGABEN_H
+#ifndef FUNKPLUGIN_H
+#define FUNKPLUGIN_H
 
-#define VERSION			"0.0.1"
-#define PROGRAMM		"ELS-Klient"
-#define FIRMA			"KatLin"
-#define PLUGINPFAD		"../Plug-Ins"
-
-#endif // VORGABEN_H
+#include <QtCore>
+class Funkplugin
+{
+	public:
+			virtual ~Funkplugin(){}
+			virtual	const QString	Version() const =0;
+			virtual const QString	Name()const =0;
+			virtual const QString	Beschreibung() const =0;
+};
+Q_DECLARE_INTERFACE(Funkplugin, "de.terrortux.katlin.Funkplugin")
+#endif // FUNKPLUGIN_H

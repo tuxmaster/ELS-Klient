@@ -27,6 +27,9 @@ const QString Pluginversion::Artname() const
 		case Type::Formular:
 			return QObject::tr("Formular");
 			break;
+		case Type::Funk:
+			return QObject::tr("Funk");
+			break;
 		default:
 			return nix;
 			break;

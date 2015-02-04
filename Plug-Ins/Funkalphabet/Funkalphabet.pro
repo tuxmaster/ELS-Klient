@@ -7,7 +7,7 @@
 include(../../Vorgaben.pri)
 
 QT       += core gui sql widgets
-
+CONFIG += plugin
 VERSION = 0.0.2
 
 TARGET = Funkalphabet

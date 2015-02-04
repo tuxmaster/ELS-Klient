@@ -31,10 +31,10 @@ Funkalphabet::Funkalphabet(QWidget *eltern, Norm welche) :	QDialog(eltern)
 	K_Uebersetzen=new Uebersetzen(this,K_Datenmodell);
 	connect(K_Uebersetzen,SIGNAL(Fertig(QStringList)),this,SLOT(UebersetzungFertig(QStringList)));
 	K_Startnorm=welche;
-	QPoint dialogCenter = mapToGlobal(rect().center());
+	/*QPoint dialogCenter = mapToGlobal(rect().center());
 	QPoint parentWindowCenter = eltern->window()->mapToGlobal(
 		eltern->window()->rect().center());
-	move(parentWindowCenter - dialogCenter);
+	move(parentWindowCenter - dialogCenter);*/
 	QTimer::singleShot(0,this,SLOT(Starten()));
 }
 void Funkalphabet::Starten()

@@ -23,7 +23,7 @@
 class Pluginversion
 {
 	public:
-		enum Type {Formular};
+		enum Type {Formular,Funk};
 		Pluginversion();
 		Pluginversion(Type type,const QString& name,const QString& beschreibung,const QString& version,QObject* erweiterung);
 		const Type&		Art()const{return K_Type;}

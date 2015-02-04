@@ -19,37 +19,45 @@
 #define DLGFUNKALPHABET_H
 
 #include <QtDesigner/QDesignerExportWidget>
+#include <QtPlugin>
+#include <QtCore>
 #include "ui_Funkalphabet.h"
 #include "Vorgaben.h"
+#include "../../Klient/Quellen/Funkplugin.h"
 
 class Datenmodell;
 class Uebersetzen;
-class QDESIGNER_WIDGET_EXPORT Funkalphabet : public QDialog, private Ui::DlgFunkalphabet
+class QDESIGNER_WIDGET_EXPORT Funkalphabet : public QDialog,public Funkplugin, private Ui::DlgFunkalphabet
 {
 		Q_OBJECT
+		Q_PLUGIN_METADATA(IID "de.terrortux.katlin.Funkplugin")
+		Q_INTERFACES(Funkplugin)
 
 	public:
-		explicit	Funkalphabet(QWidget *eltern,Norm welche=DIN);
-
+		explicit		Funkalphabet(){Funkalphabet(0);}
+		explicit		Funkalphabet(QWidget *eltern,Norm welche=DIN);
+		const QString	Version() const {return QString(FUNKALPHABET_VERSION); }
+		const QString	Name() const {return tr("Funkalphabet");}
+		const QString	Beschreibung() const {return tr("Modul für das Funkalphabet");}
 	Q_SIGNALS:
-		void		Fehler(QString meldung);
-		void		NormSpeichern(Norm die);
+		void			Fehler(QString meldung);
+		void			NormSpeichern(Norm die);
 
 	protected:
-		void		changeEvent(QEvent *e);
+		void			changeEvent(QEvent *e);
 
 	private Q_SLOTS:
-		void		UebersetzungFertig(QStringList ergebnis);
-		void		on_rkDIN_toggled(bool aktiv);
-		void		on_rkITU_toggled(bool aktiv);
-		void		on_txtEingabe_editingFinished();
-		void		Starten();
+		void			UebersetzungFertig(QStringList ergebnis);
+		void			on_rkDIN_toggled(bool aktiv);
+		void			on_rkITU_toggled(bool aktiv);
+		void			on_txtEingabe_editingFinished();
+		void			Starten();
 
 	private:
-		void		NormGeaendert(Norm norm);
-		Norm		K_Startnorm;
-		Datenmodell	*K_Datenmodell;
-		Uebersetzen	*K_Uebersetzen;
+		void			NormGeaendert(Norm norm);
+		Norm			K_Startnorm;
+		Datenmodell		*K_Datenmodell;
+		Uebersetzen		*K_Uebersetzen;
 };
 
 #endif // DLGFUNKALPHABET_H

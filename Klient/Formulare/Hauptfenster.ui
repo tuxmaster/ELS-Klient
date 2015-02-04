@@ -233,7 +233,6 @@
      <string>&amp;Funk</string>
     </property>
     <addaction name="action_Kenner_setzen"/>
-    <addaction name="action_Alphabet"/>
    </widget>
    <widget class="QMenu" name="menu_Hilfe">
     <property name="title">

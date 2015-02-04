@@ -32,7 +32,8 @@ HEADERS  += Quellen/Hauptfenster.h \
     Quellen/Formularplugin.h \
     Quellen/Pluginversion.h \
     Quellen/Erweiterungsuebersicht.h \
-    Quellen/Erweiterungsmodell.h
+    Quellen/Erweiterungsmodell.h \
+    Quellen/Funkplugin.h
 
 FORMS    += Formulare/Hauptfenster.ui \
     Formulare/Funkkenner.ui \
