@@ -15,15 +15,7 @@
 	along with this program.  If not, see <http://www.gnu.org/licenses/>
 */
 
-#ifndef FUNKPLUGIN_H
-#define FUNKPLUGIN_H
+#ifndef FUNKALPHABETPLUGIN_H
+#define FUNKALPHABETPLUGIN_H
 
-#include <QWidget>
-#include "Basisplugin.h"
-
-class Funkplugin : public Basisplugin
-{
-	public:
-			virtual ~Funkplugin(){}
-};
-#endif // FUNKPLUGIN_H
+#endif // FUNKALPHABETPLUGIN_H

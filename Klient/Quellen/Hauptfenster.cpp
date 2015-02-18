@@ -24,6 +24,7 @@
 #include "Hilfsfunktionen.h"
 #include "Funkkenner.h"
 #include "Funkplugin.h"
+#include "Funkpluginfabrik.h"
 #include "Formularplugin.h"
 
 Hauptfenster::Hauptfenster(QWidget *eltern) : QMainWindow(eltern)
@@ -169,7 +170,7 @@ void Hauptfenster::ErweiterungenLaden()
 				}
 				else
 				{
-					Funkplugin* Funk=qobject_cast<Funkplugin*>(Erweiterung);
+					Funkpluginfabrik* Funk=qobject_cast<Funkpluginfabrik*>(Erweiterung);
 
 					if (Funk)
 					{

@@ -15,15 +15,18 @@
 	along with this program.  If not, see <http://www.gnu.org/licenses/>
 */
 
-#ifndef FUNKPLUGIN_H
-#define FUNKPLUGIN_H
+#ifndef BASISPLUGIN_H
+#define BASISPLUGIN_H
 
-#include <QWidget>
-#include "Basisplugin.h"
+#include <QtCore>
 
-class Funkplugin : public Basisplugin
+class Basisplugin
 {
 	public:
-			virtual ~Funkplugin(){}
+			virtual ~Basisplugin(){}
+			virtual	const QString	Version() const =0;
+			virtual const QString	Name()const =0;
+			virtual const QString	Beschreibung() const =0;
 };
-#endif // FUNKPLUGIN_H
+Q_DECLARE_INTERFACE(Basisplugin, "de.terrortux.katlin.Basisplugin")
+#endif // BASISPLUGIN_H

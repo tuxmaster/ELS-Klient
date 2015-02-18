@@ -18,14 +18,12 @@
 #ifndef FORMULARPLUGIN_H
 #define FORMULARPLUGIN_H
 
-#include <QtCore>
-class Formularplugin
+#include "Basisplugin.h"
+
+class Formularplugin: public Basisplugin
 {
 	public:
 			virtual ~Formularplugin(){}
-			virtual	const QString&	Version() const =0;
-			virtual const QString&	Name()const =0;
-			virtual const QString&	Beschreibung() const =0;
 };
 Q_DECLARE_INTERFACE(Formularplugin, "de.terrortux.katlin.Formularplugin")
 #endif // FORMULARPLUGIN_H

@@ -15,15 +15,16 @@
 	along with this program.  If not, see <http://www.gnu.org/licenses/>
 */
 
-#ifndef FUNKPLUGIN_H
-#define FUNKPLUGIN_H
+#ifndef FUNKPLUGINFABRIK_H
+#define FUNKPLUGINFABRIK_H
 
-#include <QWidget>
-#include "Basisplugin.h"
+#include <QtCore>
 
-class Funkplugin : public Basisplugin
+class Funkplugin;
+class Funkpluginfabrik
 {
 	public:
-			virtual ~Funkplugin(){}
+				virtual Funkplugin	*funkplugin(QObject *eltern)=0;
 };
-#endif // FUNKPLUGIN_H
+Q_DECLARE_INTERFACE(Funkpluginfabrik, "de.terrortux.katlin.Funkpluginfabrik")
+#endif // FUNKPLUGINFABRIK_H

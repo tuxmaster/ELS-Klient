@@ -26,7 +26,8 @@ SOURCES += Quellen/Datenmodell.cpp \
 HEADERS  += Quellen/Vorgaben.h \
     Quellen/Datenmodell.h \
     Quellen/Uebersetzen.h \
-    Quellen/Funkalphabet.h
+    Quellen/Funkalphabet.h \
+    Quellen/Funkalphabetplugin.h
 
 FORMS    +=  Dialoge/Funkalphabet.ui
 

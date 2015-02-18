@@ -18,27 +18,24 @@
 #ifndef DLGFUNKALPHABET_H
 #define DLGFUNKALPHABET_H
 
-#include <QtDesigner/QDesignerExportWidget>
 #include <QtPlugin>
 #include <QtCore>
 #include "ui_Funkalphabet.h"
 #include "Vorgaben.h"
-#include "../../Klient/Quellen/Funkplugin.h"
+
 
 class Datenmodell;
 class Uebersetzen;
-class QDESIGNER_WIDGET_EXPORT Funkalphabet : public QDialog,public Funkplugin, private Ui::DlgFunkalphabet
+class Funkalphabet : public QDialog, private Ui::DlgFunkalphabet
 {
 		Q_OBJECT
-		Q_PLUGIN_METADATA(IID "de.terrortux.katlin.Funkplugin")
-		Q_INTERFACES(Funkplugin)
 
 	public:
-		explicit		Funkalphabet(){Funkalphabet(0);}
-		explicit		Funkalphabet(QWidget *eltern,Norm welche=DIN);
+		Funkalphabet(QWidget *eltern, Norm welche=DIN);
 		const QString	Version() const {return QString(FUNKALPHABET_VERSION); }
 		const QString	Name() const {return tr("Funkalphabet");}
 		const QString	Beschreibung() const {return tr("Modul für das Funkalphabet");}
+
 	Q_SIGNALS:
 		void			Fehler(QString meldung);
 		void			NormSpeichern(Norm die);
