@@ -158,11 +158,11 @@ void Hauptfenster::ErweiterungenLaden()
 		if (Verzeichis.fileInfo().isFile())
 		{
 			QPluginLoader ErweiterungLesen(Datei);
-			//qDebug()<<ErweiterungLesen.fileName();
+			qDebug()<<ErweiterungLesen.fileName();
 			QObject *Erweiterung = ErweiterungLesen.instance();
 			if(Erweiterung)
 			{
-				//qDebug()<<"geladen";
+				qDebug()<<"geladen";
 				Formularplugin* Formular=qobject_cast<Formularplugin*>(Erweiterung);
 				if(Formular)
 				{

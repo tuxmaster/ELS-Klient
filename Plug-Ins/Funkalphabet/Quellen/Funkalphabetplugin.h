@@ -18,4 +18,29 @@
 #ifndef FUNKALPHABETPLUGIN_H
 #define FUNKALPHABETPLUGIN_H
 
+#include <QObject>
+#include <QtPlugin>
+
+#include "Funkalphabet.h"
+#include "../../Klient/Quellen/Funkpluginfabrik.h"
+
+class Funktafel : public Funkplugin
+{
+	public:
+			QWidget* Dialog(QWidget* eltern) Q_DECL_OVERRIDE {return new Funkalphabet(eltern);}
+			const QString	Version() const Q_DECL_OVERRIDE {return QString(FUNKALPHABET_VERSION);}
+			const QString	Name() const Q_DECL_OVERRIDE {return QObject::tr("Funkalphabet");}
+			const QString	Beschreibung() const Q_DECL_OVERRIDE {return QObject::tr("Das Funkalphabet.");}
+};
+
+class Funkalphabetplugin :public QObject, Funkpluginfabrik
+{
+	Q_OBJECT
+	Q_PLUGIN_METADATA(IID "de.terrortux.katlin.Funkpluginfabrik")
+	Q_INTERFACES(Funkpluginfabrik)
+
+	public:
+			Funkplugin	*funkplugin(QObject *) Q_DECL_OVERRIDE {return new Funktafel();}
+};
+
 #endif // FUNKALPHABETPLUGIN_H

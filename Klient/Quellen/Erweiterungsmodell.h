@@ -26,10 +26,10 @@ class Erweiterungsmodell : public QAbstractTableModel
 		Q_OBJECT
 	public:
 		explicit Erweiterungsmodell(QObject *eltern ,const QList<Pluginversion>* erweiterungen);
-		int							rowCount(const QModelIndex &) const {return K_Liste->size();}
-		int							columnCount(const QModelIndex &) const {return 3;}
-		QVariant					data(const QModelIndex &index, int rolle) const;
-		QVariant					headerData(int sektion, Qt::Orientation ausrichtung, int rolle) const;
+		int							rowCount(const QModelIndex &) const Q_DECL_OVERRIDE {return K_Liste->size();}
+		int							columnCount(const QModelIndex &) const Q_DECL_OVERRIDE {return 3;}
+		QVariant					data(const QModelIndex &index, int rolle) const Q_DECL_OVERRIDE;
+		QVariant					headerData(int sektion, Qt::Orientation ausrichtung, int rolle) const Q_DECL_OVERRIDE;
 	private:
 		const QList<Pluginversion>*	K_Liste;
 };

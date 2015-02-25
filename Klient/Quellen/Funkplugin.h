@@ -24,6 +24,7 @@
 class Funkplugin : public Basisplugin
 {
 	public:
+			virtual QWidget* Dialog(QWidget* eltern)=0;
 			virtual ~Funkplugin(){}
 };
 #endif // FUNKPLUGIN_H

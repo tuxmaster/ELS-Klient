@@ -20,11 +20,14 @@
 
 #include <QtCore>
 
-class Funkplugin;
+#include "Funkplugin.h"
+
 class Funkpluginfabrik
 {
 	public:
+				virtual ~Funkpluginfabrik(){}
 				virtual Funkplugin	*funkplugin(QObject *eltern)=0;
 };
-Q_DECLARE_INTERFACE(Funkpluginfabrik, "de.terrortux.katlin.Funkpluginfabrik")
+#define Funkpluginfabrik_iid "de.terrortux.katlin.Funkpluginfabrik"
+Q_DECLARE_INTERFACE(Funkpluginfabrik, Funkpluginfabrik_iid)
 #endif // FUNKPLUGINFABRIK_H
