@@ -33,7 +33,7 @@ class Hauptfenster : public QMainWindow, private Ui::Hauptfenster
 								~Hauptfenster();
 
 	protected:
-		void					changeEvent(QEvent *e);
+		void					changeEvent(QEvent *e) Q_DECL_OVERRIDE;
 
 	private Q_SLOTS:
 		void					UhrzeitSetzen();

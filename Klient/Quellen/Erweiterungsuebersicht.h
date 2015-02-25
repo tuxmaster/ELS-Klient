@@ -30,7 +30,7 @@ class Erweiterungsuebersicht : public QDialog, private Ui::Erweiterungsuebersich
 		explicit Erweiterungsuebersicht(QWidget *eltern,const QList<Pluginversion>* erweiterungen);
 
 	protected:
-		void				changeEvent(QEvent *e);
+		void				changeEvent(QEvent *e) Q_DECL_OVERRIDE ;
 
 	private:
 		Erweiterungsmodell*	K_Datenmodell;

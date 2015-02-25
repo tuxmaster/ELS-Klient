@@ -29,10 +29,10 @@ class DlgFunkkenner : public QDialog, private Ui::DlgFunkkenner
 		const QString&	Funkkenner()const{return K_Funkkenner;}
 
 	public Q_SLOTS:
-		void			accept();
+		void			accept() Q_DECL_OVERRIDE;
 
 	protected:
-		void			changeEvent(QEvent *e);
+		void			changeEvent(QEvent *e) Q_DECL_OVERRIDE;
 
 	private:
 		QString			K_Funkkenner;
