@@ -27,7 +27,7 @@ class Datenmodell : public QSqlQueryModel
 	public:
 		explicit	Datenmodell(QObject *eltern = 0);
 		void		DB_Laden();
-		QVariant	data(const QModelIndex &wofuer, int rolle) const;
+		QVariant	data(const QModelIndex &wofuer, int rolle) const Q_DECL_OVERRIDE;
 
 	public Q_SLOTS:
 		void		NormGeaendert(Norm norm);

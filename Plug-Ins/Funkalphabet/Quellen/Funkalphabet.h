@@ -18,7 +18,6 @@
 #ifndef DLGFUNKALPHABET_H
 #define DLGFUNKALPHABET_H
 
-#include <QtPlugin>
 #include <QtCore>
 #include "ui_Funkalphabet.h"
 #include "Vorgaben.h"
@@ -41,7 +40,7 @@ class Funkalphabet : public QDialog, private Ui::DlgFunkalphabet
 		void			NormSpeichern(Norm die);
 
 	protected:
-		void			changeEvent(QEvent *e);
+		void			changeEvent(QEvent *e) Q_DECL_OVERRIDE;
 
 	private Q_SLOTS:
 		void			UebersetzungFertig(QStringList ergebnis);
