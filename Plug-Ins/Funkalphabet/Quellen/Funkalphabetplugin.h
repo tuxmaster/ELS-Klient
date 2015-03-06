@@ -40,7 +40,11 @@ class Funkalphabetplugin :public QObject, Funkpluginfabrik
 	Q_INTERFACES(Funkpluginfabrik)
 
 	public:
-			Funkplugin	*funkplugin(QObject *) Q_DECL_OVERRIDE {return new Funktafel();}
+			Funkplugin	*funkplugin(QObject *) Q_DECL_OVERRIDE {if (!K_Funktafel)
+																		K_Funktafel= new Funktafel();
+																return K_Funktafel;}
+	private:
+			Funktafel	*K_Funktafel=0;
 };
 
 #endif // FUNKALPHABETPLUGIN_H
