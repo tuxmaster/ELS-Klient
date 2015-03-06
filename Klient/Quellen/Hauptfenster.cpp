@@ -162,11 +162,11 @@ void Hauptfenster::ErweiterungenLaden()
 			QObject *Erweiterung = ErweiterungLesen.instance();
 			if(Erweiterung)
 			{
-				qDebug()<<"geladen";
+				//qDebug()<<"geladen";
 				Formularplugin* Formular=qobject_cast<Formularplugin*>(Erweiterung);
 				if(Formular)
 				{
-					qDebug()<<"Formularplugin";
+					//qDebug()<<"Formularplugin";
 				}
 				else
 				{
@@ -174,10 +174,13 @@ void Hauptfenster::ErweiterungenLaden()
 
 					if (Funk)
 					{
-						qDebug()<<"Funkplugin";
+						//qDebug()<<"Funkplugin";
+						//Pluginversion(Type type,const QString& name,const QString& beschreibung,const QString& version,QObject* erweiterung);
+						K_Pluginliste->append(Pluginversion(Pluginversion::Funk,Funk->funkplugin(this)->Name(),Funk->funkplugin(this)->Beschreibung(),
+															Funk->funkplugin(this)->Version(),Funk->funkplugin(this)));
 					}
-					else
-						qDebug()<<"Unbekannt";
+					/*else
+						qDebug()<<"Unbekannt";*/
 				}
 			}
 		}

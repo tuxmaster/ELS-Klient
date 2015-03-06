@@ -27,7 +27,7 @@ class Erweiterungsmodell : public QAbstractTableModel
 	public:
 		explicit Erweiterungsmodell(QObject *eltern ,const QList<Pluginversion>* erweiterungen);
 		int							rowCount(const QModelIndex &) const Q_DECL_OVERRIDE {return K_Liste->size();}
-		int							columnCount(const QModelIndex &) const Q_DECL_OVERRIDE {return 3;}
+		int							columnCount(const QModelIndex &) const Q_DECL_OVERRIDE {return 4;}
 		QVariant					data(const QModelIndex &index, int rolle) const Q_DECL_OVERRIDE;
 		QVariant					headerData(int sektion, Qt::Orientation ausrichtung, int rolle) const Q_DECL_OVERRIDE;
 	private:

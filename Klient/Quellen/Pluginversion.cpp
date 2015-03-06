@@ -15,7 +15,7 @@
 	along with this program.  If not, see <http://www.gnu.org/licenses/>
 */
 #include "Pluginversion.h"
-Pluginversion::Pluginversion(Type type, const QString &name, const QString &beschreibung, const QString &version, QObject *erweiterung)
+Pluginversion::Pluginversion(Type type, const QString name, const QString beschreibung, const QString version, void *erweiterung)
 {
 	K_Type=type;K_Name=name;K_Beschreibung=beschreibung;K_Version=version;K_Erweiterung=erweiterung;
 }

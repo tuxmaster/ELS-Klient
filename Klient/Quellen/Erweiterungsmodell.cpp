@@ -34,6 +34,9 @@ QVariant Erweiterungsmodell::headerData(int sektion, Qt::Orientation ausrichtung
 					return tr("Name");
 					break;
 			case 2:
+					return tr("Version");
+					break;
+			case 3:
 					return tr("Beschreibung");
 					break;
 			default:
@@ -56,6 +59,8 @@ QVariant Erweiterungsmodell::data(const QModelIndex &index, int rolle) const
 			return K_Liste->at(index.row()).Name();
 			break;
 		case 2:
+			return K_Liste->at(index.row()).Version();
+		case 3:
 			return K_Liste->at(index.row()).Beschreibung();
 			break;
 		default:
