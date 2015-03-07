@@ -16,13 +16,26 @@
 */
 
 #include "Erweiterungsuebersicht.h"
-#include "Erweiterungsmodell.h"
 
 Erweiterungsuebersicht::Erweiterungsuebersicht(QWidget *eltern, const QList<Pluginversion> *erweiterungen) : QDialog(eltern)
 {
-	K_Datenmodell=new Erweiterungsmodell(this,erweiterungen);
 	setupUi(this);
-	Erweiterungsbaum->setModel(K_Datenmodell);
+	QList<QTreeWidgetItem *> Gruppen;
+	QHash<QString,QTreeWidgetItem*> Tabelle;
+	//C++11 mit Qt
+	for ( auto Plugin : *erweiterungen)
+	{
+		if (!Tabelle.contains(Plugin.Artname()))
+		{
+			Tabelle[Plugin.Artname()]=new QTreeWidgetItem(Erweiterungsbaum,QStringList(tr("%1").arg(Plugin.Artname())));
+			Gruppen.append(Tabelle[Plugin.Artname()]);
+		}
+		QStringList Daten;
+		Daten <<Plugin.Name()<<Plugin.Version()<<Plugin.Beschreibung();
+		Tabelle[Plugin.Artname()]->addChild(new QTreeWidgetItem(Tabelle[Plugin.Artname()],Daten));
+
+	}
+	Erweiterungsbaum->insertTopLevelItems(0,Gruppen);
 }
 
 void Erweiterungsuebersicht::changeEvent(QEvent *e)

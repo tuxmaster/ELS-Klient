@@ -15,16 +15,31 @@
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
-    <widget class="QTableView" name="Erweiterungsbaum">
+    <widget class="QTreeWidget" name="Erweiterungsbaum">
      <property name="selectionMode">
       <enum>QAbstractItemView::NoSelection</enum>
      </property>
-     <attribute name="horizontalHeaderStretchLastSection">
-      <bool>true</bool>
-     </attribute>
-     <attribute name="verticalHeaderVisible">
+     <property name="columnCount">
+      <number>3</number>
+     </property>
+     <attribute name="headerCascadingSectionResizes">
       <bool>false</bool>
      </attribute>
+     <column>
+      <property name="text">
+       <string>Name</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Version</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Beschreibung</string>
+      </property>
+     </column>
     </widget>
    </item>
    <item>

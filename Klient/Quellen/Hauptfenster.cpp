@@ -158,7 +158,7 @@ void Hauptfenster::ErweiterungenLaden()
 		if (Verzeichis.fileInfo().isFile())
 		{
 			QPluginLoader ErweiterungLesen(Datei);
-			qDebug()<<ErweiterungLesen.fileName();
+			//qDebug()<<ErweiterungLesen.fileName();
 			QObject *Erweiterung = ErweiterungLesen.instance();
 			if(Erweiterung)
 			{
