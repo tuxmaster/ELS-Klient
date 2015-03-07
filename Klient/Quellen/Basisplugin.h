@@ -26,6 +26,7 @@ class Basisplugin
 			virtual ~Basisplugin(){}
 			virtual	const QString	Version() const =0;
 			virtual const QString	Name()const =0;
+			virtual const QString	NameMenue() const {return QString();}
 			virtual const QString	Beschreibung() const =0;
 };
 Q_DECLARE_INTERFACE(Basisplugin, "de.terrortux.katlin.Basisplugin")

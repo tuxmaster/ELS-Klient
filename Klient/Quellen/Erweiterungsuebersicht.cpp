@@ -27,7 +27,7 @@ Erweiterungsuebersicht::Erweiterungsuebersicht(QWidget *eltern, const QList<Plug
 	{
 		if (!Tabelle.contains(Plugin.Artname()))
 		{
-			Tabelle[Plugin.Artname()]=new QTreeWidgetItem(Erweiterungsbaum,QStringList(tr("%1").arg(Plugin.Artname())));
+			Tabelle[Plugin.Artname()]=new QTreeWidgetItem(Erweiterungsbaum,QStringList(QString(Plugin.Artname())));
 			Gruppen.append(Tabelle[Plugin.Artname()]);
 		}
 		QStringList Daten;

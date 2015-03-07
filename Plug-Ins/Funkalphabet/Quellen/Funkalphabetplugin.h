@@ -30,6 +30,7 @@ class Funktafel : public Funkplugin
 			QWidget* Dialog(QWidget* eltern) Q_DECL_OVERRIDE {return new Funkalphabet(eltern);}
 			const QString	Version() const Q_DECL_OVERRIDE {return QString(FUNKALPHABET_VERSION);}
 			const QString	Name() const Q_DECL_OVERRIDE {return QObject::tr("Funkalphabet");}
+			const QString	NameMenue() const Q_DECL_OVERRIDE { return QObject::tr("Funk&alphabet");}
 			const QString	Beschreibung() const Q_DECL_OVERRIDE {return QObject::tr("Das Funkalphabet.");}
 };
 
