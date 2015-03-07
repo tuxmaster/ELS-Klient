@@ -23,9 +23,8 @@
 #include "Vorgaben.h"
 #include "Hilfsfunktionen.h"
 #include "Funkkenner.h"
-#include "Funkplugin.h"
 #include "Funkpluginfabrik.h"
-#include "Formularplugin.h"
+#include "Formularpluginfabrik.h"
 
 Hauptfenster::Hauptfenster(QWidget *eltern) : QMainWindow(eltern)
 {
@@ -163,10 +162,13 @@ void Hauptfenster::ErweiterungenLaden()
 			if(Erweiterung)
 			{
 				//qDebug()<<"geladen";
-				Formularplugin* Formular=qobject_cast<Formularplugin*>(Erweiterung);
+				Formularpluginfabrik* Formular=qobject_cast<Formularpluginfabrik*>(Erweiterung);
 				if(Formular)
 				{
-					//qDebug()<<"Formularplugin";
+					qDebug()<<"Formularplugin";
+
+					QAction *Aktion=new QAction(Formular->formularplugin(this)->NameMenue(),this);
+					menu_Vordrucke->addAction(Aktion);
 				}
 				else
 				{
@@ -178,6 +180,8 @@ void Hauptfenster::ErweiterungenLaden()
 						//Pluginversion(Type type,const QString& name,const QString& beschreibung,const QString& version,QObject* erweiterung);
 						K_Pluginliste->append(Pluginversion(Pluginversion::Funk,Funk->funkplugin(this)->Name(),Funk->funkplugin(this)->Beschreibung(),
 															Funk->funkplugin(this)->Version(),Funk->funkplugin(this)));
+						QAction *Aktion=new QAction(Funk->funkplugin(this)->NameMenue(),this);
+						menu_Funk->addAction(Aktion);
 					}
 					/*else
 						qDebug()<<"Unbekannt";*/
