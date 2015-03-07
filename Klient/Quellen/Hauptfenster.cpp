@@ -181,6 +181,7 @@ void Hauptfenster::ErweiterungenLaden()
 						K_Pluginliste->append(Pluginversion(Pluginversion::Funk,Funk->funkplugin(this)->Name(),Funk->funkplugin(this)->Beschreibung(),
 															Funk->funkplugin(this)->Version(),Funk->funkplugin(this)));
 						QAction *Aktion=new QAction(Funk->funkplugin(this)->NameMenue(),this);
+						connect(Aktion,SIGNAL(triggered()),Funk->funkplugin(this)->Dialog(this),SLOT(show()));
 						menu_Funk->addAction(Aktion);
 					}
 					/*else
