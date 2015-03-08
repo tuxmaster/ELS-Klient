@@ -31,13 +31,10 @@ class Funkalphabet : public QDialog, private Ui::DlgFunkalphabet
 
 	public:
 		Funkalphabet(QWidget *eltern, Norm welche=DIN);
-		const QString	Version() const {return QString(FUNKALPHABET_VERSION); }
-		const QString	Name() const {return tr("Funkalphabet");}
-		const QString	Beschreibung() const {return tr("Modul für das Funkalphabet");}
 
 	Q_SIGNALS:
 		void			Fehler(QString meldung);
-		void			NormSpeichern(Norm die);
+		void			NormSpeichern(QString parameter,QVariant wert);
 
 	protected:
 		void			changeEvent(QEvent *e) Q_DECL_OVERRIDE;

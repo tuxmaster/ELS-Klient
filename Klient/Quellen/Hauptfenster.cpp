@@ -117,13 +117,13 @@ void Hauptfenster::on_action_Kenner_setzen_triggered()
 	DlgFunkkenner* kenner=new DlgFunkkenner(this,txtFunkkenner->text());
 	if(kenner->exec()== QDialog::Accepted)
 	{
-		K_Einstellungen->setValue("Funk/Kenner",kenner->Funkkenner());
+		EinstellungSpeichern("Funk/Kenner",kenner->Funkkenner());
 		txtFunkkenner->setText(kenner->Funkkenner());
 	}
 }
 void Hauptfenster::on_Stundenmodus_stateChanged(int status)
 {
-	K_Einstellungen->setValue("Programm/24H",status);
+	EinstellungSpeichern("Programm/24H",status);
 }
 void Hauptfenster::Fehler(const QString &meldung)
 {
@@ -182,6 +182,8 @@ void Hauptfenster::ErweiterungenLaden()
 															Funk->funkplugin(this)->Version(),Funk->funkplugin(this)));
 						QAction *Aktion=new QAction(Funk->funkplugin(this)->NameMenue(),this);
 						connect(Aktion,SIGNAL(triggered()),Funk->funkplugin(this)->Dialog(this),SLOT(show()));
+						connect(Funk->funkplugin(this)->Dialog(this),SIGNAL(Fehler(QString)),this,SLOT(Fehler(QString)));
+						connect(Funk->funkplugin(this)->Dialog(this),SIGNAL(NormSpeichern(QString,QVariant)),this,SLOT(EinstellungSpeichern(QString,QVariant)));
 						menu_Funk->addAction(Aktion);
 					}
 					/*else
@@ -193,6 +195,11 @@ void Hauptfenster::ErweiterungenLaden()
 	}
 	std::sort(K_Pluginliste->begin(),K_Pluginliste->end(),Hauptfenster::KleinerAls);
 }
+void Hauptfenster::EinstellungSpeichern(const QString &parameter, const QVariant &wert)
+{
+	K_Einstellungen->setValue(parameter,wert);
+}
+
 bool Hauptfenster::KleinerAls(const Pluginversion &a, const Pluginversion &b)
 {
 	//Typ Sortieren

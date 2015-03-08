@@ -44,6 +44,7 @@ class Hauptfenster : public QMainWindow, private Ui::Hauptfenster
 		void					on_action_Ueber_Erweiterungen_triggered();
 		void					on_Stundenmodus_stateChanged(int status);
 		void					Fehler(const QString& meldung);
+		void					EinstellungSpeichern(const QString &parameter,const QVariant &wert);
 
 	private:
 		QSettings*				K_Einstellungen;

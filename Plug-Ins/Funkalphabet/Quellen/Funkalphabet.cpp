@@ -77,7 +77,7 @@ void Funkalphabet::on_rkITU_toggled(bool aktiv)
 }
 void Funkalphabet::NormGeaendert(Norm norm)
 {
-	emit NormSpeichern(norm);
+	emit NormSpeichern("Funk/Norm",QVariant(norm));
 	K_Datenmodell->NormGeaendert(norm);
 	on_txtEingabe_editingFinished();
 }
