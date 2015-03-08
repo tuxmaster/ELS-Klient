@@ -28,15 +28,21 @@ class Funktafel : public Funkplugin
 {
 	public:
 			QWidget* Dialog(QWidget* eltern) Q_DECL_OVERRIDE { if(!K_Funkalphabet)
-																	K_Funkalphabet=new Funkalphabet(eltern);
+																	K_Funkalphabet=new Funkalphabet(eltern,K_Norm);
 																return K_Funkalphabet;
 															 }
 			const QString	Version() const Q_DECL_OVERRIDE {return QString(FUNKALPHABET_VERSION);}
 			const QString	Name() const Q_DECL_OVERRIDE {return QObject::tr("Funkalphabet");}
 			const QString	NameMenue() const Q_DECL_OVERRIDE { return QObject::tr("Funk&alphabet");}
 			const QString	Beschreibung() const Q_DECL_OVERRIDE {return QObject::tr("Das Funkalphabet.");}
+			void			FunknormSetzen(QVariant norm) Q_DECL_OVERRIDE { if(norm.isValid())
+																				K_Norm=(Norm)norm.toInt();
+																			else
+																				K_Norm=Norm::DIN;
+																		  }
 	private:
 			Funkalphabet*	K_Funkalphabet=0;
+			Norm			K_Norm;
 };
 
 class Funkalphabetplugin :public QObject, Funkpluginfabrik

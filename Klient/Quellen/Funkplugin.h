@@ -24,7 +24,8 @@
 class Funkplugin : public Basisplugin
 {
 	public:
-			virtual QWidget* Dialog(QWidget* eltern)=0;
-			virtual ~Funkplugin(){}
+			virtual QWidget*	Dialog(QWidget* eltern)=0;
+			virtual	void		FunknormSetzen(QVariant){}
+			virtual				~Funkplugin(){}
 };
 #endif // FUNKPLUGIN_H

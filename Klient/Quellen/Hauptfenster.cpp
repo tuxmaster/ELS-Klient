@@ -180,6 +180,7 @@ void Hauptfenster::ErweiterungenLaden()
 						//Pluginversion(Type type,const QString& name,const QString& beschreibung,const QString& version,QObject* erweiterung);
 						K_Pluginliste->append(Pluginversion(Pluginversion::Funk,Funk->funkplugin(this)->Name(),Funk->funkplugin(this)->Beschreibung(),
 															Funk->funkplugin(this)->Version(),Funk->funkplugin(this)));
+						Funk->funkplugin(this)->FunknormSetzen(K_Einstellungen->value("Funk/Norm"));
 						QAction *Aktion=new QAction(Funk->funkplugin(this)->NameMenue(),this);
 						connect(Aktion,SIGNAL(triggered()),Funk->funkplugin(this)->Dialog(this),SLOT(show()));
 						connect(Funk->funkplugin(this)->Dialog(this),SIGNAL(Fehler(QString)),this,SLOT(Fehler(QString)));
