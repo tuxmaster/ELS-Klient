@@ -27,11 +27,16 @@
 class Funktafel : public Funkplugin
 {
 	public:
-			QWidget* Dialog(QWidget* eltern) Q_DECL_OVERRIDE {return new Funkalphabet(eltern);}
+			QWidget* Dialog(QWidget* eltern) Q_DECL_OVERRIDE { if(!K_Funkalphabet)
+																	K_Funkalphabet=new Funkalphabet(eltern);
+																return K_Funkalphabet;
+															 }
 			const QString	Version() const Q_DECL_OVERRIDE {return QString(FUNKALPHABET_VERSION);}
 			const QString	Name() const Q_DECL_OVERRIDE {return QObject::tr("Funkalphabet");}
 			const QString	NameMenue() const Q_DECL_OVERRIDE { return QObject::tr("Funk&alphabet");}
 			const QString	Beschreibung() const Q_DECL_OVERRIDE {return QObject::tr("Das Funkalphabet.");}
+	private:
+			Funkalphabet*	K_Funkalphabet=0;
 };
 
 class Funkalphabetplugin :public QObject, Funkpluginfabrik
@@ -43,7 +48,8 @@ class Funkalphabetplugin :public QObject, Funkpluginfabrik
 	public:
 			Funkplugin	*funkplugin(QObject *) Q_DECL_OVERRIDE {if (!K_Funktafel)
 																		K_Funktafel= new Funktafel();
-																return K_Funktafel;}
+																return K_Funktafel;
+																}
 	private:
 			Funktafel	*K_Funktafel=0;
 };
