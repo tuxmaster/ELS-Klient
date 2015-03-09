@@ -151,6 +151,7 @@ void Hauptfenster::ErweiterungenLaden()
 {
 	QDirIterator Verzeichis(PLUGINPFAD,QDirIterator::Subdirectories);
 	QString Datei;
+	bool KeinFormular=true;
 	while (Verzeichis.hasNext())
 	{
 		Datei=Verzeichis.next();
@@ -165,6 +166,7 @@ void Hauptfenster::ErweiterungenLaden()
 				Formularpluginfabrik* Formular=qobject_cast<Formularpluginfabrik*>(Erweiterung);
 				if(Formular)
 				{
+					KeinFormular=false;
 					qDebug()<<"Formularplugin";
 
 					QAction *Aktion=new QAction(Formular->formularplugin(this)->NameMenue(),this);
@@ -194,6 +196,8 @@ void Hauptfenster::ErweiterungenLaden()
 		}
 
 	}
+	if(KeinFormular)
+		menu_Vordrucke->setEnabled(false);
 	std::sort(K_Pluginliste->begin(),K_Pluginliste->end(),Hauptfenster::KleinerAls);
 }
 void Hauptfenster::EinstellungSpeichern(const QString &parameter, const QVariant &wert)
