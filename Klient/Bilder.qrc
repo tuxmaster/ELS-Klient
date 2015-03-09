@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/">
+        <file alias="Funk.svg">Symbole/Funk.svg</file>
+        <file alias="Formular.svg">Symbole/Formular.svg</file>
+    </qresource>
+</RCC>

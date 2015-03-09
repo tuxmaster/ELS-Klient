@@ -39,3 +39,6 @@ HEADERS  += Quellen/Hauptfenster.h \
 FORMS    += Formulare/Hauptfenster.ui \
     Formulare/Funkkenner.ui \
     Formulare/Erweiterungsuebersicht.ui
+
+RESOURCES += \
+    Bilder.qrc

@@ -22,12 +22,27 @@ Erweiterungsuebersicht::Erweiterungsuebersicht(QWidget *eltern, const QList<Plug
 	setupUi(this);
 	QList<QTreeWidgetItem *> Gruppen;
 	QHash<QString,QTreeWidgetItem*> Tabelle;
+	QString Symbol;
 	//C++11 mit Qt
 	for ( auto Plugin : *erweiterungen)
 	{
 		if (!Tabelle.contains(Plugin.Artname()))
 		{
+			Symbol.clear();
 			Tabelle[Plugin.Artname()]=new QTreeWidgetItem(Erweiterungsbaum,QStringList(QString(Plugin.Artname())));
+			switch (Plugin.Art())
+			{
+				case Pluginversion::Funk:
+						Symbol="Funk.svg";
+						break;
+				case Pluginversion::Formular:
+						Symbol="Formular.svg";
+						break;
+				default:
+						break;
+			}
+			if(!Symbol.isEmpty())
+				Tabelle[Plugin.Artname()]->setIcon(0,QIcon(QString(":/%1").arg(Symbol)));
 			Gruppen.append(Tabelle[Plugin.Artname()]);
 		}
 		QStringList Daten;

@@ -23,7 +23,8 @@
 class Formularplugin: public Basisplugin
 {
 	public:
-			virtual ~Formularplugin(){}
+			virtual						~Formularplugin(){}
+			virtual	const QStringList&	Formulare() const =0;
 };
 Q_DECLARE_INTERFACE(Formularplugin, "de.terrortux.katlin.Formularplugin")
 #endif // FORMULARPLUGIN_H
