@@ -25,6 +25,7 @@
 Funkalphabet::Funkalphabet(QWidget *eltern, Norm welche) :	QDialog(eltern)
 {
 	setupUi(this);
+	this->setWindowFlags(Qt::CustomizeWindowHint|Qt::WindowCloseButtonHint|Qt::WindowTitleHint|Qt::Window);
 	K_Datenmodell= new Datenmodell(this);
 	connect(K_Datenmodell,SIGNAL(Fehler(QString)),this,SIGNAL(Fehler(QString)));
 	tbUebersicht->setModel(K_Datenmodell);
@@ -90,4 +91,8 @@ void Funkalphabet::on_txtEingabe_editingFinished()
 void Funkalphabet::UebersetzungFertig(QStringList ergebnis)
 {
 	txtAusgabe->setText(ergebnis.join("\r\n"));
+}
+void Funkalphabet::on_sfDrucken_clicked()
+{
+	qDebug()<<"tets";
 }

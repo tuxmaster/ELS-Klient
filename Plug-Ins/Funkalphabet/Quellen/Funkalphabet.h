@@ -44,6 +44,7 @@ class Funkalphabet : public QDialog, private Ui::DlgFunkalphabet
 		void			on_rkDIN_toggled(bool aktiv);
 		void			on_rkITU_toggled(bool aktiv);
 		void			on_txtEingabe_editingFinished();
+		void			on_sfDrucken_clicked();
 		void			Starten();
 
 	private:

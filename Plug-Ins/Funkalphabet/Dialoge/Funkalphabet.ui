@@ -80,6 +80,16 @@
     </layout>
    </item>
    <item>
+    <widget class="QPushButton" name="sfDrucken">
+     <property name="toolTip">
+      <string>Druckt beide Normen als Handzettel aus.</string>
+     </property>
+     <property name="text">
+      <string>Drucken</string>
+     </property>
+    </widget>
+   </item>
+   <item>
     <widget class="QTabWidget" name="Karten">
      <property name="currentIndex">
       <number>0</number>
