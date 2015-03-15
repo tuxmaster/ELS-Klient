@@ -52,6 +52,8 @@ class Funkalphabetplugin :public QObject, Funkpluginfabrik
 	Q_INTERFACES(Funkpluginfabrik)
 
 	public:
+			~Funkalphabetplugin(){if(K_Funktafel)
+									delete K_Funktafel;}
 			Funkplugin	*funkplugin(QObject *) Q_DECL_OVERRIDE {if (!K_Funktafel)
 																		K_Funktafel= new Funktafel();
 																return K_Funktafel;
