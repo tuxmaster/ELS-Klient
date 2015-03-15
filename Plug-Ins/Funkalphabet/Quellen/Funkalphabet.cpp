@@ -17,6 +17,8 @@
 
 #include <QtSql>
 #include <QtGui>
+#include <QtPrintSupport/QPrintDialog>
+#include <QtPrintSupport/QPrinter>
 
 #include "Datenmodell.h"
 #include "Uebersetzen.h"
@@ -36,6 +38,7 @@ Funkalphabet::Funkalphabet(QWidget *eltern, Norm welche) :	QDialog(eltern)
 	QPoint parentWindowCenter = eltern->window()->mapToGlobal(
 		eltern->window()->rect().center());
 	move(parentWindowCenter - dialogCenter);
+	K_Druckerauswahl=new QPrintDialog(this);
 	QTimer::singleShot(0,this,SLOT(Starten()));
 }
 void Funkalphabet::Starten()
@@ -94,5 +97,13 @@ void Funkalphabet::UebersetzungFertig(QStringList ergebnis)
 }
 void Funkalphabet::on_sfDrucken_clicked()
 {
-	qDebug()<<"tets";
+	QPrinter *Drucker=K_Druckerauswahl->printer();
+	Drucker->setCreator("Funkalphabet");
+	Drucker->setDocName("Funkalphabet");
+
+	K_Druckerauswahl->open(this,SLOT(DruckerAusgewaehlt(QPrinter*)));
+}
+void Funkalphabet::DruckerAusgewaehlt(QPrinter *drucker)
+{
+	qDebug()<<"Drucken";
 }

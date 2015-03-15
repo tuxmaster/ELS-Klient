@@ -25,6 +25,9 @@
 
 class Datenmodell;
 class Uebersetzen;
+class QPrintDialog;
+class QPrinter;
+
 class Funkalphabet : public QDialog, private Ui::DlgFunkalphabet
 {
 		Q_OBJECT
@@ -46,12 +49,14 @@ class Funkalphabet : public QDialog, private Ui::DlgFunkalphabet
 		void			on_txtEingabe_editingFinished();
 		void			on_sfDrucken_clicked();
 		void			Starten();
+		void			DruckerAusgewaehlt(QPrinter *drucker);
 
 	private:
 		void			NormGeaendert(Norm norm);
 		Norm			K_Startnorm;
 		Datenmodell		*K_Datenmodell;
 		Uebersetzen		*K_Uebersetzen;
+		QPrintDialog	*K_Druckerauswahl;
 };
 
 #endif // DLGFUNKALPHABET_H

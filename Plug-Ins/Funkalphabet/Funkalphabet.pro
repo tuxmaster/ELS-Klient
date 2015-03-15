@@ -6,7 +6,7 @@
 
 include(../../Vorgaben.pri)
 
-QT       += core gui sql widgets
+QT       += core gui sql widgets printsupport
 CONFIG += plugin
 VERSION = 0.0.2
 
