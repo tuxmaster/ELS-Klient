@@ -158,8 +158,32 @@
      </widget>
     </widget>
    </item>
+   <item>
+    <widget class="QDialogButtonBox" name="bbEnde">
+     <property name="standardButtons">
+      <set>QDialogButtonBox::Close</set>
+     </property>
+    </widget>
+   </item>
   </layout>
  </widget>
  <resources/>
- <connections/>
+ <connections>
+  <connection>
+   <sender>bbEnde</sender>
+   <signal>clicked(QAbstractButton*)</signal>
+   <receiver>DlgFunkalphabet</receiver>
+   <slot>reject()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>788</x>
+     <y>521</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>831</x>
+     <y>65</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
 </ui>
