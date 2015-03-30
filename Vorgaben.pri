@@ -1,1 +1,1 @@
-CONFIG += c++11
+CONFIG += c++11 no_keywords
