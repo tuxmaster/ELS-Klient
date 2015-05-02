@@ -29,7 +29,7 @@ class Hauptfenster : public QMainWindow, private Ui::Hauptfenster
 		Q_OBJECT
 
 	public:
-		explicit				Hauptfenster(QWidget *eltern = 0);
+		explicit				Hauptfenster(QWidget *eltern = Q_NULLPTR);
 								~Hauptfenster();
 
 	protected:

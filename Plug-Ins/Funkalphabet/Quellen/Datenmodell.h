@@ -25,7 +25,7 @@ class Datenmodell : public QSqlQueryModel
 {
 		Q_OBJECT
 	public:
-		explicit	Datenmodell(QObject *eltern = 0);
+		explicit	Datenmodell(QObject *eltern = Q_NULLPTR);
 		void		DB_Laden();
 		QVariant	data(const QModelIndex &wofuer, int rolle) const Q_DECL_OVERRIDE;
 
