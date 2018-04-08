@@ -3,16 +3,12 @@
 # Project created by QtCreator 2014-07-12T19:13:46
 #
 #-------------------------------------------------
-
-QT       += core gui widgets positioning sql
 include(../Vorgaben.pri)
+QT       += positioning sql
+
 
 TARGET = ELS-Klient
 
-UI_DIR=tmp/ui
-MOC_DIR=tmp/moc
-OBJECTS_DIR=tmp/obj
-RCC_DIR=tmp/rcc
 
 TEMPLATE = app
 

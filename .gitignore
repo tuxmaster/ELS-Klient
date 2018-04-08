@@ -1,0 +1,3 @@
+.qmake*
+Makefile
+*.pro.user*

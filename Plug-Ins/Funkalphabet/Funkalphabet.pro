@@ -6,34 +6,18 @@
 
 include(../../Vorgaben.pri)
 
-QT       += core gui sql widgets printsupport
 CONFIG += plugin
-VERSION = 0.0.2
+VERSION = 0.1.0
+
+
+LIBS += -lFunkalphabet -L../../../Funkalphabet/bin
+INCLUDEPATH += ../../../Funkalphabet/Quellen \
+	../../../Funkalphabet/tmp/ui \
+	../../Klient/Quellen
 
 TARGET = Funkalphabet
-UI_DIR=tmp/ui
-MOC_DIR=tmp/moc
-OBJECTS_DIR=tmp/obj
-RCC_DIR=tmp/rcc
 
 TEMPLATE = lib
 
+HEADERS += Quellen/Funkalphabetplugin.h
 
-SOURCES += Quellen/Datenmodell.cpp \
-    Quellen/Uebersetzen.cpp \
-    Quellen/Funkalphabet.cpp
-
-HEADERS  += Quellen/Vorgaben.h \
-    Quellen/Datenmodell.h \
-    Quellen/Uebersetzen.h \
-    Quellen/Funkalphabet.h \
-    Quellen/Funkalphabetplugin.h
-
-FORMS    +=  Dialoge/Funkalphabet.ui
-
-Datenbank.commands = ./DB_erstellen.sh
-Datenbank.depends = $(TARGET)
-
-QMAKE_EXTRA_TARGETS += Datenbank
-
-RESOURCES += Bilder/Bilder.qrc

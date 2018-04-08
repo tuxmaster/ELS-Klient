@@ -18,9 +18,9 @@
 #ifndef VORGABEN_H
 #define VORGABEN_H
 
-#define VERSION			"0.0.1"
+#define VERSION			"0.1.0"
 #define PROGRAMM		"ELS-Klient"
 #define FIRMA			"KatLin"
-#define PLUGINPFAD		"../Plug-Ins"
+#define PLUGINPFAD		"Plug-Ins"
 
 #endif // VORGABEN_H
